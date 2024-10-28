@@ -76,6 +76,12 @@
 
 //#define HW_HEADER					"hw_duet.h"
 //#define HW_SOURCE					"hw_duet.c"
+
+//#define HW_HEADER					"hw_lectec_remote.h"
+//#define HW_SOURCE					"hw_lectec_remote.c"
+
+//#define HW_HEADER					"hw_lectec.h"
+//#define HW_SOURCE					"hw_lectec.c"
 #endif
 
 #if !defined(HW_SOURCE) && !defined(HW_SOURCE_ALT)
