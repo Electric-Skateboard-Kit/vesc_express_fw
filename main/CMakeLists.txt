@@ -96,6 +96,7 @@ set(COMPONENT_ADD_INCLUDEDIRS
 "."
 "config"
 "hwconf"
+"hwconf/lectec"
 "hwconf/trampa"
 "hwconf/trampa/bms_rb"
 "hwconf/vesc"

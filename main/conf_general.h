@@ -29,8 +29,8 @@
 #define FW_TEST_VERSION_NUMBER		0
 
 #if !defined(HW_SOURCE) && !defined(HW_HEADER)
-#define HW_HEADER					"hw_xp_t.h"
-#define HW_SOURCE					"hw_xp_t.c"
+#define HW_HEADER					"hw_lectec.h"
+#define HW_SOURCE					"hw_lectec.c"
 
 //#define HW_HEADER					"hw_str365.h"
 //#define HW_SOURCE					"hw_str365.c"
