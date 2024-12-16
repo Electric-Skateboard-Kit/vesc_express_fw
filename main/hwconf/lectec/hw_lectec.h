@@ -21,21 +21,12 @@
 #define MAIN_HWCONF_TRAMPA_HW_XP_T_H_
 
 #include "driver/gpio.h"
+#include "esp_mac.h"
 
-#define HW_NAME						"LECTEC"
+extern char HW_NAME[37];
 #define HW_NO_UART
 
 #define HW_INIT_HOOK()				hw_init()
-
-// LEDs
-//#define LED_RED_PIN					2
-//#define LED_BLUE_PIN				7
-
-//#define LED_RED_ON()				gpio_set_level(LED_RED_PIN, 1)
-//#define LED_RED_OFF()				gpio_set_level(LED_RED_PIN, 0)
-
-//#define LED_BLUE_ON()				gpio_set_level(LED_BLUE_PIN, 1)
-//#define LED_BLUE_OFF()				gpio_set_level(LED_BLUE_PIN, 0)
 
 // CAN
 #define CAN_TX_GPIO_NUM				1
@@ -43,12 +34,10 @@
 
 // NAND-memory
 #define NAND_PIN_MOSI				5
-#define NAND_PIN_MISO			    6
+#define NAND_PIN_MISO               6
 #define NAND_PIN_SCK				4
-#define NAND_PIN_CS					7  //3
+#define NAND_PIN_CS					3  //7
 #define FLASH_FREQ_KHZ              4000
-
-//#define LED_RGB_PIN                 7
 
 // UART
 #define UART_NUM					0
@@ -58,5 +47,6 @@
 
 // Functions
 void hw_init(void);
+void generate_uuid(char* uuid_str, size_t len);
 
 #endif /* MAIN_HWCONF_TRAMPA_HW_XP_T_H_ */

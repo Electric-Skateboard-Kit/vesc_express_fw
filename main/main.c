@@ -76,6 +76,8 @@ void app_main(void) {
 	tv.tv_usec = 0;
 	settimeofday(&tv, NULL);
 
+	generate_uuid(HW_NAME, sizeof(HW_NAME));
+
 	esp_err_t ret = nvs_flash_init();
 	if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
 		nvs_flash_erase();

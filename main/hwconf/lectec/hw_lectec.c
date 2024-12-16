@@ -21,6 +21,8 @@
 #include "driver/gpio.h"
 #include "driver/uart.h"
 
+char HW_NAME[37] = "LECTEC";
+
 void hw_init(void) {
 
 		uart_driver_delete(UART_NUM_0);
@@ -29,12 +31,16 @@ void hw_init(void) {
 	    gpio_config_t io_conf = {};
 	    io_conf.intr_type = GPIO_INTR_DISABLE;
 	    io_conf.mode = GPIO_MODE_OUTPUT;
-	    //io_conf.pin_bit_mask = (1ULL <<(LED_RGB_PIN));  // io_conf.pin_bit_mask = ((1ULL << LED_RED_PIN) | (1ULL << LED_BLUE_PIN) |  BIT(LED_RGB_PIN));
 	    io_conf.pull_down_en = 0;
 	    io_conf.pull_up_en = 0;
 	    gpio_config(&io_conf);
 
+}
 
-	   // LED_RED_OFF();
-	   // LED_BLUE_OFF();
+void generate_uuid(char* uuid_str, size_t len) {
+    uint8_t mac[6];
+    esp_efuse_mac_get_default(mac);
+
+     snprintf(uuid_str, len, "LECTEC-%X%02X%02X",
+             mac[3] & 0x0F, mac[4], mac[5]);
 }
