@@ -41,6 +41,7 @@
 #include "commands.h"
 #include "conf_general.h"
 #include "main.h"
+#include "hw_lectec.h"
 
 #define GATTS_CHAR_VAL_LEN_MAX 255
 #define DEFAULT_BLE_MTU 20 // 23 for default mtu and 3 bytes for ATT headers
@@ -677,7 +678,12 @@ void comm_ble_init(void) {
 	esp_ble_tx_power_set(ESP_BLE_PWR_TYPE_SCAN, ESP_PWR_LVL_P18);
 	esp_ble_tx_power_set(ESP_BLE_PWR_TYPE_DEFAULT, ESP_PWR_LVL_P18);
 
-	esp_bt_dev_set_device_name((char *)backup.config.ble_name);
+	char* new_name = generate_display_name();
+	strncpy((char *)backup.config.ble_name, new_name, sizeof(backup.config.ble_name) - 1);
+	backup.config.ble_name[sizeof(backup.config.ble_name) - 1] = '\0';
+	esp_bt_dev_set_device_name((const char *)backup.config.ble_name);
+
+	free(new_name);
 
 	esp_ble_gatts_register_callback(gatts_event_handler);
 	esp_ble_gap_register_callback(gap_event_handler);

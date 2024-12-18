@@ -3,6 +3,8 @@
 #ifndef CONF_DEFAULT_H_
 #define CONF_DEFAULT_H_
 
+extern char* CONF_BLE_NAME;
+
 // CAN ID
 #ifndef CONF_CONTROLLER_ID
 #define CONF_CONTROLLER_ID 2
@@ -20,7 +22,7 @@
 
 // WiFi Mode
 #ifndef CONF_WIFI_MODE
-#define CONF_WIFI_MODE 0
+#define CONF_WIFI_MODE 1
 #endif
 
 // Station Mode SSID
@@ -79,9 +81,9 @@
 #endif
 
 // Name
-#ifndef CONF_BLE_NAME
-#define CONF_BLE_NAME "ExpressT"
-#endif
+//#ifndef CONF_BLE_NAME
+//#define CONF_BLE_NAME "ExpressT"
+//#endif
 
 // Bluetooth Pin Code
 #ifndef CONF_BLE_PIN

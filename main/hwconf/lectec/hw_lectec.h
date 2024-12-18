@@ -23,7 +23,7 @@
 #include "driver/gpio.h"
 #include "esp_mac.h"
 
-extern char HW_NAME[37];
+extern char* HW_NAME;
 #define HW_NO_UART
 
 #define HW_INIT_HOOK()				hw_init()
@@ -47,6 +47,7 @@ extern char HW_NAME[37];
 
 // Functions
 void hw_init(void);
-void generate_uuid(char* uuid_str, size_t len);
+char* generate_hw_name();
+char* generate_display_name();
 
 #endif /* MAIN_HWCONF_TRAMPA_HW_XP_T_H_ */

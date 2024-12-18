@@ -21,7 +21,7 @@
 #include "driver/gpio.h"
 #include "driver/uart.h"
 
-char HW_NAME[37] = "LECTEC";
+char* HW_NAME = NULL;
 
 void hw_init(void) {
 
@@ -35,12 +35,42 @@ void hw_init(void) {
 	    io_conf.pull_up_en = 0;
 	    gpio_config(&io_conf);
 
+        HW_NAME = generate_hw_name();
+
 }
 
-void generate_uuid(char* uuid_str, size_t len) {
+char* generate_hw_name() {
     uint8_t mac[6];
     esp_efuse_mac_get_default(mac);
 
-     snprintf(uuid_str, len, "LECTEC-%X%02X%02X",
+
+    size_t len = 32;
+    char* name_str = (char*)malloc(len);
+    if (name_str == NULL) {
+        return NULL;
+    }
+
+    snprintf(name_str, len, "LECTEC-%X%02X%02X",
              mac[3] & 0x0F, mac[4], mac[5]);
+
+    return name_str;
+
+}
+
+char* generate_display_name() {
+    uint8_t mac[6];
+    esp_efuse_mac_get_default(mac);
+
+
+    size_t len = 32;
+    char* name_str = (char*)malloc(len);
+    if (name_str == NULL) {
+        return NULL;
+    }
+
+    snprintf(name_str, len, "LT-%X%02X%02X",
+             mac[3] & 0x0F, mac[4], mac[5]);
+
+    return name_str;
+
 }

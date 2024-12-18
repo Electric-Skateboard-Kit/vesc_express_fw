@@ -4,6 +4,9 @@
 #include "buffer.h"
 #include "conf_general.h"
 #include "confparser.h"
+#include "hw_lectec.h"
+
+char* CONF_BLE_NAME = NULL;
 
 int32_t confparser_serialize_main_config_t(uint8_t *buffer, const main_config_t *conf) {
 	int32_t ind = 0;
@@ -96,6 +99,9 @@ void confparser_set_defaults_main_config_t(main_config_t *conf) {
 	strcpy(conf->tcp_hub_id, CONF_TCP_HUB_ID);
 	strcpy(conf->tcp_hub_pass, CONF_TCP_HUB_PASS);
 	conf->ble_mode = CONF_BLE_MODE;
+	if (CONF_BLE_NAME == NULL) {
+        CONF_BLE_NAME = generate_display_name();
+    }
 	strcpy(conf->ble_name, CONF_BLE_NAME);
 	conf->ble_pin = CONF_BLE_PIN;
 	conf->ble_service_capacity = CONF_BLE_SERVICE_CAPACITY;
