@@ -33,11 +33,11 @@ extern char* HW_NAME;
 #define CAN_RX_GPIO_NUM				0
 
 // NAND-memory
-#define NAND_PIN_MOSI				5
-#define NAND_PIN_MISO               6
-#define NAND_PIN_SCK				4
-#define NAND_PIN_CS					3  //7
-#define FLASH_FREQ_KHZ              4000
+//#define NAND_PIN_MOSI				5
+//#define NAND_PIN_MISO               6
+//#define NAND_PIN_SCK				4
+//#define NAND_PIN_CS					3  //7
+//#define FLASH_FREQ_KHZ              4000
 
 // UART
 #define UART_NUM					0
